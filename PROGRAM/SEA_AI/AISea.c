@@ -21,15 +21,15 @@ void CreateSea(string sExecuteLayer, string sRealizeLayer)
 	CreateEntity(&Sea, "sea");
 	MoveSeaToLayers(sExecuteLayer, sRealizeLayer);
 
-	LayerFreeze("sea_reflection", false);
+	LayerFreeze(SEA_REFLECTION, false);
 
 	Sea.AbordageMode = false;
 }
 
 void MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject("execute", &Sea);
-	LayerDelObject("realize", &Sea);
+	LayerDelObject(LAYER_EXECUTE, &Sea);
+	LayerDelObject(REALIZE, &Sea);
 	LayerDelObject(SEA_EXECUTE, &Sea);
 	LayerDelObject(SEA_REALIZE, &Sea);
 
@@ -213,8 +213,8 @@ void AISea_ReturnFromAbordage()
 	MoveSeaToLayers(SEA_EXECUTE,SEA_REALIZE);
 	MoveWeatherToLayers(SEA_EXECUTE,SEA_REALIZE);
 
-	LayerFreeze("realize",true);
-	LayerFreeze("execute",true);
+	LayerFreeze(REALIZE,true);
+	LayerFreeze(LAYER_EXECUTE,true);
 
 	LayerFreeze(SEA_EXECUTE,false);
 	LayerFreeze(SEA_REALIZE,false);

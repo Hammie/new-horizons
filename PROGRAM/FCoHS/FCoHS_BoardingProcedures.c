@@ -61,11 +61,11 @@ void FCoHS_Boarding_StartFade()
 	// Freeze layers
 	LayerFreeze(SEA_EXECUTE, true);
 	LayerFreeze(SEA_REALIZE, true);
-	LayerFreeze("sea_reflection", true);
-	LayerFreeze("execute", false);
-	LayerFreeze("realize", false);
-	MoveWeatherToLayers("execute", "realize");
-	MoveSeaToLayers("execute", "realize");
+	LayerFreeze(SEA_REFLECTION, true);
+	LayerFreeze(LAYER_EXECUTE, false);
+	LayerFreeze(REALIZE, false);
+	MoveWeatherToLayers(LAYER_EXECUTE, REALIZE);
+	MoveSeaToLayers(LAYER_EXECUTE, REALIZE);
 
 	// Delete all cannonballs (although we shouldn't be in combat)
 	SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);

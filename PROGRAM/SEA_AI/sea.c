@@ -26,8 +26,8 @@
 
 #define DEBUGCR		0		// LDH set to 1 to get coastal traffic debugging info 15Feb09
 
-string	sCurrentSeaExecute = "execute";
-string	sCurrentSeaRealize = "realize";
+string	sCurrentSeaExecute = LAYER_EXECUTE;
+string	sCurrentSeaRealize = REALIZE;
 
 int		iAITemplatesNum;
 bool	bSeaActive;
@@ -69,8 +69,8 @@ void DeleteSeaEnvironment()
 
 	StopMusic();
 	bSeaActive = false;
-	sCurrentSeaExecute = "execute";
-	sCurrentSeaRealize = "realize";
+	sCurrentSeaExecute = LAYER_EXECUTE;
+	sCurrentSeaRealize = REALIZE;
 
 	rPlayer.Ship.Stopped = true;
 	// PB: Steam Ships -->
@@ -122,8 +122,8 @@ void DeleteSeaEnvironment()
 	LayerFreeze(SEA_EXECUTE, true);
 	LayerFreeze(SEA_REALIZE, true);
 
-	LayerFreeze("realize", false);
-	LayerFreeze("execute", false);
+	LayerFreeze(REALIZE, false);
+	LayerFreeze(LAYER_EXECUTE, false);
 
 	DeleteClass(&AISea);
 
@@ -162,10 +162,10 @@ void CreateSeaEnvironment()
 
 	Ship_Walk_Init();
 
-	LayerFreeze("realize", true);
-	LayerFreeze("execute", true);
-	LayerCreate("sea_reflection", 1);
-	LayerFreeze("sea_reflection", false);
+	LayerFreeze(REALIZE, true);
+	LayerFreeze(LAYER_EXECUTE, true);
+	LayerCreate(SEA_REFLECTION, 1);
+	LayerFreeze(SEA_REFLECTION, false);
 
 	InterfaceStates.Buttons.Resume.enable = true;
 
@@ -265,8 +265,8 @@ void Sea_LandLoad()
 
 	if (!bSeaActive) return;
 	if (bCanEnterToLand) {
-		LayerFreeze("realize", false);
-		LayerFreeze("execute", false);
+		LayerFreeze(REALIZE, false);
+		LayerFreeze(LAYER_EXECUTE, false);
 
 // KK -->
 		if (bDeckEnter)
@@ -310,8 +310,8 @@ void Sea_ImmediateLandLoad(bool toFort)
 		SeaCameras_Switch();
 		SeaCameras_Switch();
 
-		LayerFreeze("realize", false);
-		LayerFreeze("execute", false);
+		LayerFreeze(REALIZE, false);
+		LayerFreeze(LAYER_EXECUTE, false);
 
 		// added after build 11 by KAM -->
 		ref tempMainChar = GetMainCharacter();
@@ -628,14 +628,14 @@ void SeaLogin(ref Login)
 
 		SendMessage(&Island, "lsss", MSG_ISLAND_LOAD_GEO, "islands", Islands[iIslandIndex].filespath.models, Islands[iIslandIndex].model);
 		LayerAddObject(SEA_REALIZE, &Island, 65529);
-		LayerAddObject("mast_island_trace", &Island, 1);
-		LayerAddObject("sun_trace", &Island, 1);
+		LayerAddObject(MAST_ISLAND_TRACE, &Island, 1);
+		LayerAddObject(SUN_TRACE, &Island, 1);
 
 		CreateEntity(&IslandReflModel, "MODELR");
 		string sReflModel = Islands[iIslandIndex].filespath.models + "\" + Islands[iIslandIndex].refl_model;
 		SendMessage(&IslandReflModel, "ls", MSG_MODEL_SET_LIGHT_PATH, GetLightingPath());
 		SendMessage(&IslandReflModel, "ls", MSG_MODEL_LOAD_GEO, sReflModel);
-		LayerAddObject("sea_reflection", &IslandReflModel, -1);
+		LayerAddObject(SEA_REFLECTION, &IslandReflModel, -1);
 		SendMessage(SeaLighter, "ssi", "AddModel", Islands[iIslandIndex].refl_model, &IslandReflModel);
 
 		bIslandLoaded = true;

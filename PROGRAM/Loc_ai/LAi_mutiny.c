@@ -6,12 +6,12 @@ void MutinyDeck_ReloadStartFade()
 	boarding_fader = GetEventData();
 	LayerFreeze(SEA_EXECUTE,true);
 	LayerFreeze(SEA_REALIZE,true);
-	LayerFreeze("sea_reflection",true);
-	LayerFreeze("execute",false);
-	LayerFreeze("realize",false);
+	LayerFreeze(SEA_REFLECTION,true);
+	LayerFreeze(LAYER_EXECUTE,false);
+	LayerFreeze(REALIZE,false);
 
-	MoveWeatherToLayers("execute", "realize");
-	MoveSeaToLayers("execute", "realize");
+	MoveWeatherToLayers(LAYER_EXECUTE, REALIZE);
+	MoveSeaToLayers(LAYER_EXECUTE, REALIZE);
 
 	SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 
@@ -462,10 +462,10 @@ void MutinyDeck_ReloadEndFadeAfter()
 		}
 	}
 
-	LayerFreeze("execute",true);
-	LayerFreeze("realize",true);
+	LayerFreeze(LAYER_EXECUTE,true);
+	LayerFreeze(REALIZE,true);
 
-	LayerFreeze("sea_reflection", false);
+	LayerFreeze(SEA_REFLECTION, false);
 	LayerFreeze(SEA_EXECUTE,false);
 	LayerFreeze(SEA_REALIZE,false);
 

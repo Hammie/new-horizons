@@ -90,8 +90,8 @@ void LoadActivePerkShower()
 	}
 	else
 	{
-		LayerAddObject("execute",&objActivePerkShower,-1);
-		LayerAddObject("realize",&objActivePerkShower,-1);
+		LayerAddObject(LAYER_EXECUTE,&objActivePerkShower,-1);
+		LayerAddObject(REALIZE,&objActivePerkShower,-1);
 	}
 }
 

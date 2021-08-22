@@ -450,7 +450,7 @@ void CreateScreenShoter()
 	DeleteEntitiesByType("scrshoter");
 	object scrshoter;
 // KK -->
-	string layer = "realize";
+	string layer = REALIZE;
 	if (bSeaActive && !bAbordageStarted) layer = SEA_REALIZE;
 	LayerCreate(layer, 1);
 	LayerSetRealize(layer, 1);
@@ -1561,8 +1561,8 @@ void _Procedure_EndVideoPlay()
 	{
 		if(aviVideoObj.layer == "land")
 		{
-			LayerFreeze("realize",false);
-			LayerFreeze("execute",false);
+			LayerFreeze(REALIZE,false);
+			LayerFreeze(LAYER_EXECUTE,false);
 		}
 		if(aviVideoObj.layer == "sea")
 		{
@@ -1644,8 +1644,8 @@ void RunHelpChooser()
 	bRunHelpChooser = true;
 	EngineLayersOffOn(false);
 	InterfaceStates.Launched=true;
-	LayerAddObject("iExecute",&objHelpChooser,10000);
-	LayerAddObject("iRealize",&objHelpChooser,10000);
+	LayerAddObject(INTERFACE_EXECUTE,&objHelpChooser,10000);
+	LayerAddObject(INTERFACE_REALIZE,&objHelpChooser,10000);
 }
 
 void ProcEndHelpChooser()
@@ -1981,8 +1981,8 @@ void procInfoShow()
 
 			CreateEntity(&objInfoList[nInfoIdx],"InfoHandler");
 
-			LayerCreate("inf_realize", 1);
-			LayerSetRealize("inf_realize", 1);
+			LayerCreate(INFO_REALIZE, 1);
+			LayerSetRealize(INFO_REALIZE, 1);
 		}
 	}
 	else
@@ -2019,10 +2019,10 @@ void InfoShowSetting()
 		}
 
 		if( bMakeSet ) {
-			LayerAddObject("inf_realize",&objInfoList[i],-1);
+			LayerAddObject(INFO_REALIZE,&objInfoList[i],-1);
 			bAlreadySet = true;
 		} else {
-			LayerDelObject("inf_realize",&objInfoList[i]);
+			LayerDelObject(INFO_REALIZE,&objInfoList[i]);
 		}
 
 		if(i==2) {
@@ -2047,11 +2047,11 @@ void InfoShowSetting()
 	}
 
 	if(bAlreadySet) {
-		LayerFreeze("irealize",true);
-		LayerFreeze("iexecute",true);
+		LayerFreeze(INTERFACE_REALIZE,true);
+		LayerFreeze(INTERFACE_EXECUTE,true);
 	} else {
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE,false);
+		LayerFreeze(INTERFACE_EXECUTE,false);
 	}
 }
 
@@ -2068,8 +2068,8 @@ void InfoShow_Control()
 			SendMessage(&GameInterface,"l",MSG_INTERFACE_LAUNCH_DASHBOARD);
 		}
 		else Event("evntLowStorageBreak");
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE,false);
+		LayerFreeze(INTERFACE_EXECUTE,false);
 	}
 }
 
@@ -2081,8 +2081,8 @@ void InfoShow_Control2()
 	{
 		PostEvent("DoInfoShower",0,"sl","OptionsBreak",false);
 		Event("evntOptionsBreak");
-		LayerFreeze("irealize",false);
-		LayerFreeze("iexecute",false);
+		LayerFreeze(INTERFACE_REALIZE,false);
+		LayerFreeze(INTERFACE_EXECUTE,false);
 	}
 }
 
