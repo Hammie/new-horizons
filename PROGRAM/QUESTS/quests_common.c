@@ -432,7 +432,7 @@ string GenerateFetchCargo(ref ctown) //temp function until economy overhaul
 		int storenum = GetAttributesNum(Stores[sti(ctown.store)]);
 		for(int i=0;i<storenum;i++)
 		{
-			storetype = GetAttributeN(Stores[ctown.store],i);
+			storetype = GetAttributeN(&Stores[ctown.store],i);
 			switch(GetAttributeName(storetype))
 			{
 				case "dockyard":

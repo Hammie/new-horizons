@@ -392,13 +392,13 @@ void LAi_group_RemoveCheck(string groupName)
 	int num = GetAttributesNum(quests);
 	for(int i = 0; i < num; i++)
 	{
-		aref atr = GetAttributeN(&quests, i);
+		aref atr = GetAttributeN(quests, i);
 		if(GetAttribute(atr, "win_condition.l1.group") == groupName)
 		{
 			//Remove
-			DeleteAttribute(&quests, GetAttributeName(GetAttributeN(&quests, i)));
+			DeleteAttribute(quests, GetAttributeName(GetAttributeN(quests, i)));
 			i = -1;
-			num = GetAttributesNum(&quests);
+			num = GetAttributesNum(quests);
 		}
 	}
 	// PB: Use new system instead <--
