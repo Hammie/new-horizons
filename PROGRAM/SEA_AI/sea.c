@@ -26,8 +26,8 @@
 
 #define DEBUGCR		0		// LDH set to 1 to get coastal traffic debugging info 15Feb09
 
-string	sCurrentSeaExecute = LAYER_EXECUTE;
-string	sCurrentSeaRealize = REALIZE;
+int		sCurrentSeaExecute = EXECUTE;
+int		sCurrentSeaRealize = REALIZE;
 
 int		iAITemplatesNum;
 bool	bSeaActive;
@@ -69,7 +69,7 @@ void DeleteSeaEnvironment()
 
 	StopMusic();
 	bSeaActive = false;
-	sCurrentSeaExecute = LAYER_EXECUTE;
+	sCurrentSeaExecute = EXECUTE;
 	sCurrentSeaRealize = REALIZE;
 
 	rPlayer.Ship.Stopped = true;
@@ -123,7 +123,7 @@ void DeleteSeaEnvironment()
 	LayerFreeze(SEA_REALIZE, true);
 
 	LayerFreeze(REALIZE, false);
-	LayerFreeze(LAYER_EXECUTE, false);
+	LayerFreeze(EXECUTE, false);
 
 	DeleteClass(&AISea);
 
@@ -163,17 +163,12 @@ void CreateSeaEnvironment()
 	Ship_Walk_Init();
 
 	LayerFreeze(REALIZE, true);
-	LayerFreeze(LAYER_EXECUTE, true);
-	LayerCreate(SEA_REFLECTION, 1);
+	LayerFreeze(EXECUTE, true);
 	LayerFreeze(SEA_REFLECTION, false);
 
 	InterfaceStates.Buttons.Resume.enable = true;
 
 	bSeaActive = true;
-	LayerCreate(SEA_REALIZE, 1);
-	LayerSetRealize(SEA_REALIZE, 1);
-	LayerCreate(SEA_EXECUTE, 1);
-	LayerSetExecute(SEA_EXECUTE, 1);
 
 	LayerFreeze(SEA_EXECUTE, false);
 	LayerFreeze(SEA_REALIZE, false);
@@ -266,7 +261,7 @@ void Sea_LandLoad()
 	if (!bSeaActive) return;
 	if (bCanEnterToLand) {
 		LayerFreeze(REALIZE, false);
-		LayerFreeze(LAYER_EXECUTE, false);
+		LayerFreeze(EXECUTE, false);
 
 // KK -->
 		if (bDeckEnter)
@@ -311,7 +306,7 @@ void Sea_ImmediateLandLoad(bool toFort)
 		SeaCameras_Switch();
 
 		LayerFreeze(REALIZE, false);
-		LayerFreeze(LAYER_EXECUTE, false);
+		LayerFreeze(EXECUTE, false);
 
 		// added after build 11 by KAM -->
 		ref tempMainChar = GetMainCharacter();

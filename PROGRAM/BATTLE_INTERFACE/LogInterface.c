@@ -42,11 +42,11 @@ void InitLogInterface()
 	SetEventHandler("BI_FastCommand","BI_FastCommand",0);
 	SetEventHandler(BI_EVENT_SET_VISIBLE,"SetLogInterfaceVisible",0);
 // KK -->
-	LayerAddObject(LAYER_EXECUTE, &ILog, -257);
+	LayerAddObject(EXECUTE, &ILog, -257);
 	LayerAddObject(REALIZE, &ILog, -257);
 	LayerAddObject(SEA_EXECUTE, &ILog,-257);
 	LayerAddObject(SEA_REALIZE, &ILog, -257);
-	LayerAddObject(LAYER_EXECUTE, &IActions, -257);
+	LayerAddObject(EXECUTE, &IActions, -257);
 	LayerAddObject(REALIZE, &IActions, -257);
 	LayerAddObject(SEA_EXECUTE, &IActions, -257);
 	LayerAddObject(SEA_REALIZE, &IActions, -257);
@@ -645,7 +645,7 @@ void InitDateTimeDisplay()
 {
 	CreateEntity(&IDateTimeDisplay, "IDateTime_Show");
 	DeleteAttribute(&IDateTimeDisplay, "");
-	LayerAddObject(LAYER_EXECUTE, &IDateTimeDisplay, -257);
+	LayerAddObject(EXECUTE, &IDateTimeDisplay, -257);
 	LayerAddObject(REALIZE, &IDateTimeDisplay, -257);
 	LayerAddObject(SEA_EXECUTE, &IDateTimeDisplay, -257);
 	LayerAddObject(SEA_REALIZE, &IDateTimeDisplay, -257);

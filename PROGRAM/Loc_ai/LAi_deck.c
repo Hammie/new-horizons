@@ -48,11 +48,11 @@ void Deck_ReloadStartFade()
 	LayerFreeze(SEA_EXECUTE,true);
 	LayerFreeze(SEA_REALIZE,true);
 	LayerFreeze(SEA_REFLECTION,true);
-	LayerFreeze(LAYER_EXECUTE,false);
+	LayerFreeze(EXECUTE,false);
 	LayerFreeze(REALIZE,false);
 
-	MoveWeatherToLayers(LAYER_EXECUTE, REALIZE);
-	MoveSeaToLayers(LAYER_EXECUTE, REALIZE);
+	MoveWeatherToLayers(EXECUTE, REALIZE);
+	MoveSeaToLayers(EXECUTE, REALIZE);
 
 	SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 
@@ -96,10 +96,10 @@ void Deck_ReloadEndFade()
 
 	// unload all models
 	aref arModel;
-	if (FindClass(&arModel, "modelr"))
+	if (FindEntity(&arModel, "modelr"))
 	{
 		SendMessage(arModel, "l", MSG_MODEL_RELEASE);
-		while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
+		while (FindEntityNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
 	}
 
 	PauseParticles(true);
@@ -431,17 +431,17 @@ void Deck_ReloadEndFadeAfter()
 /////////////////////////////////////////////////////////////////////
     // load all models back to sea
 	aref arModel;
-	if (FindClass(&arModel, "modelr"))
+	if (FindEntity(&arModel, "modelr"))
 	{
 		SendMessage(arModel, "l", MSG_MODEL_RESTORE);
-		while (FindClassNext(&arModel))
+		while (FindEntityNext(&arModel))
 		{
 			//Trace("XYZ");
 			SendMessage(arModel, "l", MSG_MODEL_RESTORE);
 		}
 	}
 
-	LayerFreeze(LAYER_EXECUTE,true);
+	LayerFreeze(EXECUTE,true);
 	LayerFreeze(REALIZE,true);
 
 	LayerFreeze(SEA_REFLECTION, false);
@@ -481,11 +481,11 @@ void Cabin_ReloadStartFade()
 	LayerFreeze(SEA_EXECUTE,true);
 	LayerFreeze(SEA_REALIZE,true);
 	LayerFreeze(SEA_REFLECTION,true);
-	LayerFreeze(LAYER_EXECUTE,false);
+	LayerFreeze(EXECUTE,false);
 	LayerFreeze(REALIZE,false);
 
-	//MoveWeatherToLayers(LAYER_EXECUTE, REALIZE);
-	//MoveSeaToLayers(LAYER_EXECUTE, REALIZE);
+	//MoveWeatherToLayers(EXECUTE, REALIZE);
+	//MoveSeaToLayers(EXECUTE, REALIZE);
 
 	SendMessage(&AIBalls, "l", MSG_MODEL_RELEASE);
 
@@ -504,10 +504,10 @@ void Cabin_ReloadEndFade()
 
 	// unload all models
 	aref arModel;
-	if (FindClass(&arModel, "modelr"))
+	if (FindEntity(&arModel, "modelr"))
 	{
 		SendMessage(arModel, "l", MSG_MODEL_RELEASE);
-		while (FindClassNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
+		while (FindEntityNext(&arModel)) { SendMessage(arModel, "l", MSG_MODEL_RELEASE); }
 	}
 
 	PauseParticles(true);
@@ -516,8 +516,8 @@ void Cabin_ReloadEndFade()
 	int a = GetEventData();
 	boarding_fader = GetEventData();
 
-	MoveWeatherToLayers(LAYER_EXECUTE, REALIZE);
-	MoveSeaToLayers(LAYER_EXECUTE, REALIZE);
+	MoveWeatherToLayers(EXECUTE, REALIZE);
+	MoveSeaToLayers(EXECUTE, REALIZE);
 
 	Cabin_Start();
 

@@ -74,7 +74,7 @@ void WhrCreateSunGlowEnvironment()
 
 void MoveSunGlowToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE,&SunGlow);
+	LayerDelObject(EXECUTE,&SunGlow);
 	LayerDelObject(REALIZE,&SunGlow);
 	LayerDelObject(SEA_EXECUTE,&SunGlow);
 	LayerDelObject(SEA_REALIZE,&SunGlow);

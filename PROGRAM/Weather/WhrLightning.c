@@ -52,7 +52,7 @@ void WhrCreateLightningEnvironment()
 
 void MoveLightningToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE,&Lightning);
+	LayerDelObject(EXECUTE,&Lightning);
 	LayerDelObject(REALIZE,&Lightning);
 	LayerDelObject(SEA_EXECUTE,&Lightning);
 	LayerDelObject(SEA_REALIZE,&Lightning);

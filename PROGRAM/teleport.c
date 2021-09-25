@@ -12,7 +12,7 @@ void InitTeleport()
 	
 	nTeleportShowData = 0;
 	CreateEntity(&objTeleport,"TMPTELEPORT");
-	LayerAddObject(LAYER_EXECUTE,&objTeleport,-1);
+	LayerAddObject(EXECUTE,&objTeleport,-1);
 	LayerAddObject(REALIZE,&objTeleport,-1);
 	SetEventHandler("TeleportChoose","DoTeleportChoose",0);
 	SetEventHandler("TeleportStart","DoTeleportStart",0);

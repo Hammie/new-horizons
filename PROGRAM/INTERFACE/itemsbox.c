@@ -635,7 +635,7 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 		SendMessage(&IActions,"ll",LI_SET_VISIBLE,false);
 
 	/*	LayerFreeze(REALIZE,bSeaActive && !ownDeckStarted() && !LAi_IsBoardingProcess());
-		LayerFreeze(LAYER_EXECUTE,true);
+		LayerFreeze(EXECUTE,true);
 		bool bShow = ownDeckStarted();
 		if(!bShow) bShow = LAi_IsBoardingProcess();
 		LayerFreeze(SEA_REALIZE,!bSeaActive && bShow);
@@ -644,7 +644,7 @@ void InitInterface_RS(string iniName,ref itemsRef,string faceID)
 		// MM: To avoid boarding crash -->
 	/*	LayerFreeze(REALIZE,true);
 		LayerFreeze(SEA_REALIZE,true);
-		LayerFreeze(LAYER_EXECUTE,true);
+		LayerFreeze(EXECUTE,true);
 		LayerFreeze(SEA_EXECUTE,true);*/
 		// MM: To avoid boarding crash <--
 		

@@ -188,7 +188,7 @@ void WhrCreateSkyEnvironment()
 
 void MoveSkyToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE,&Sky);
+	LayerDelObject(EXECUTE,&Sky);
 	LayerDelObject(REALIZE,&Sky);
 	LayerDelObject(SEA_EXECUTE,&Sky);
 	LayerDelObject(SEA_REALIZE,&Sky);

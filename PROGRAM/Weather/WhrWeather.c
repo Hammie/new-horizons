@@ -574,7 +574,7 @@ void DeleteWeather()
 
 void MoveWeatherToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE,&Weather);
+	LayerDelObject(EXECUTE,&Weather);
 	LayerDelObject(REALIZE,&Weather);
 	LayerDelObject(SEA_EXECUTE,&Weather);
 	LayerDelObject(SEA_REALIZE,&Weather);

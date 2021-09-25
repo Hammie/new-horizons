@@ -1,7 +1,7 @@
 #include "BuildSettings.h" // scheffnow
 #include "InternalSettings.h" // where the more esoteric/programmerly things from BS.h got moved. NK 05-07-17
 
-#include "layers.h"
+#include "storm-engine\layers.h"
 
 #include "events.h"
 #include "sulan_shipslog.c"
@@ -115,6 +115,8 @@ ref TortugaDame1;
 ref TortugaDame2;
 ref TortugaDame3;
 // PB: Tortuga Ladies <--
+
+object Render;
 
 void ProcessCheat()
 {
@@ -325,12 +327,6 @@ void Main()
 	SystemDelay(1000);
 	onesec = RDTSC_E(iRDTSC_main);*/
 	// NK <--
-
-	LayerCreate(REALIZE, 1);
-	LayerCreate(SEA_REALIZE, 1);
-	LayerCreate(INTERFACE_REALIZE, 1);
-	LayerCreate(FADER_REALIZE, 1);
-	LayerCreate(INFO_REALIZE, 1);
 
 	ReloadProgressStart();
 	ControlsInit(GetTargetPlatform(),true);
@@ -610,7 +606,7 @@ void InterfaceDoExit()
 			else
 			{
 				LayerFreeze(REALIZE, false);
-				LayerFreeze(LAYER_EXECUTE, false);
+				LayerFreeze(EXECUTE, false);
 			}
 // KK -->
 			if (CheckAttribute(mchr, "NationsRelations_PreviousNation")) {
@@ -707,11 +703,9 @@ void InterfaceDoExit()
 
 void EngineLayersOffOn(bool on)
 {
-	//LayerSetRealize(REALIZE,on);
-	//LayerSetExecute(LAYER_EXECUTE,on);
 	on = !on;
 	LayerFreeze(REALIZE,on);
-	LayerFreeze(LAYER_EXECUTE,on);
+	LayerFreeze(EXECUTE,on);
 	if(!bAbordageStarted) { // KK
 		LayerFreeze(SEA_REALIZE,on);
 		LayerFreeze(SEA_EXECUTE,on);
@@ -1045,11 +1039,6 @@ void NewGame_continue()
 
 void InitGame()
 {
-	LayerCreate(REALIZE, 1);
-	LayerCreate(SEA_REALIZE, 1);
-	LayerCreate(INTERFACE_REALIZE, 1);
-	LayerCreate(FADER_REALIZE, 1);
-	LayerCreate(INFO_REALIZE, 1);
 	Trace("Gauging: createlayers");
 	if(LoadSegment("store\initStore.c"))
 	{

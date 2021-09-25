@@ -159,14 +159,14 @@ void DoQuickSave()
 	string restrictSave = "save_now";
 
 	aref arTmp;
-	if(FindClass(&arTmp,"fader")) bEnableSave = false;
+	if(FindEntity(&arTmp,"fader")) bEnableSave = false;
 
 	if(dialogRun || dialogSelf) bEnableSave = false;
 	if(!CheckAttribute(&InterfaceStates, "Buttons.Save.enable") || InterfaceStates.Buttons.Save.enable!= 1) bEnableSave = false;
 	if(InterfaceStates.Launched!=0) bEnableSave = false;
 
 	aref arScrShoter;
-	if(FindClass(&arScrShoter,"scrshoter")) bEnableSave = false;
+	if(FindEntity(&arScrShoter,"scrshoter")) bEnableSave = false;
 
 	if(bSeaActive && !bMapEnter) { bEnableSave = false; restrictSave = "save_while sailing"; }
 	if(LAi_IsBoardingProcess()) { bEnableSave = false; restrictSave = "save_while boarding"; }
@@ -233,7 +233,7 @@ void ClearScreenShoter()
 {
 	DeleteEntitiesByType("scrshoter");
 	aref arScrShoter;
-	if(FindClass(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter));
+	if(FindEntity(&arScrShoter,"scrshoter")) DeleteClass(&arScrShoter));
 	if(CheckAttribute(&InterfaceStates,"MakeScreenShot")) DeleteAttribute(&InterfaceStates,"MakeScreenShot");
 }
 
@@ -324,14 +324,14 @@ void DoAutoSave()
 	string restrictSave = "save_now";
 
 	/*aref arTmp;
-	if(FindClass(&arTmp,"fader")) bEnableSave = false;
+	if(FindEntity(&arTmp,"fader")) bEnableSave = false;
 
 	if(dialogRun || dialogSelf) bEnableSave = false;
 	//if(!CheckAttribute(&InterfaceStates, "Buttons.Save.enable") || InterfaceStates.Buttons.Save.enable!= 1) bEnableSave = false;
 	if(InterfaceStates.Launched!=0) bEnableSave = false;
 
 	aref arScrShoter;
-	if(FindClass(&arScrShoter,"scrshoter")) bEnableSave = false;
+	if(FindEntity(&arScrShoter,"scrshoter")) bEnableSave = false;
 
 	if(bSeaActive) { bEnableSave = false; restrictSave = "save_while sailing"; }
 	if(LAi_IsBoardingProcess()) { bEnableSave = false; restrictSave = "save_while boarding"; }
@@ -392,7 +392,7 @@ void LaunchInfoScreen()
 		BLI_DisableShow();
 		SetEventHandler("makescrshot","LaunchInfoScreenContinue",0);
 		aref arScrShoter;
-		if (!FindClass(&arScrShoter,"scrshoter")) {
+		if (!FindEntity(&arScrShoter,"scrshoter")) {
 			CreateScreenShoter();
 			PostEvent("makescrshot",1);
 		} else {
@@ -422,7 +422,7 @@ void LaunchLootingScreen()
 		BLI_DisableShow();
 		SetEventHandler("makescrshot","LaunchLootingScreenContinue",0);
 		aref arScrShoter;
-		if (!FindClass(&arScrShoter,"scrshoter")) {
+		if (!FindEntity(&arScrShoter,"scrshoter")) {
 			CreateScreenShoter();
 			PostEvent("makescrshot",1);
 		} else {
@@ -450,10 +450,8 @@ void CreateScreenShoter()
 	DeleteEntitiesByType("scrshoter");
 	object scrshoter;
 // KK -->
-	string layer = REALIZE;
+	int layer = REALIZE;
 	if (bSeaActive && !bAbordageStarted) layer = SEA_REALIZE;
-	LayerCreate(layer, 1);
-	LayerSetRealize(layer, 1);
 	CreateEntity(&scrshoter,"scrshoter");
 	scrshoter.SavePath = "SAVE\" + GetStorylineDir(FindCurrentStoryline());
 	LayerAddObject(layer, &scrshoter, -1);
@@ -978,7 +976,7 @@ void LaunchMainMenu()
 
 	SetEventHandler("makescrshot","LaunchMainMenuContinue",0);
 	aref arScrShoter;
-	if (!FindClass(&arScrShoter,"scrshoter")) {
+	if (!GetEntity(&arScrShoter,"scrshoter")) {
 		CreateScreenShoter();
 		PostEvent("makescrshot",10); // Levis: was 1
 	} else {
@@ -1562,7 +1560,7 @@ void _Procedure_EndVideoPlay()
 		if(aviVideoObj.layer == "land")
 		{
 			LayerFreeze(REALIZE,false);
-			LayerFreeze(LAYER_EXECUTE,false);
+			LayerFreeze(EXECUTE,false);
 		}
 		if(aviVideoObj.layer == "sea")
 		{
@@ -1980,9 +1978,6 @@ void procInfoShow()
 			}
 
 			CreateEntity(&objInfoList[nInfoIdx],"InfoHandler");
-
-			LayerCreate(INFO_REALIZE, 1);
-			LayerSetRealize(INFO_REALIZE, 1);
 		}
 	}
 	else

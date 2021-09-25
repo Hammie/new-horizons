@@ -17,7 +17,7 @@ void InitInterface_I(string iniName, int payment)
 		//SetTimeScale(0.0);
 
 		LayerFreeze(REALIZE, true);
-		LayerFreeze(LAYER_EXECUTE,true);
+		LayerFreeze(EXECUTE,true);
 	}
 	SetNodeUsing("VIDEOBASE", bNewInterface);
 	SetNodeUsing("BACKSLIDE", bNewInterface);

@@ -48,7 +48,7 @@ void WhrCreateRainEnvironment()
 
 void MoveRainToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE,&Rain);
+	LayerDelObject(EXECUTE,&Rain);
 	LayerDelObject(REALIZE,&Rain);
 	LayerDelObject(SEA_EXECUTE,&Rain);
 	LayerDelObject(SEA_REALIZE,&Rain);

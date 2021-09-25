@@ -28,7 +28,7 @@ void CreateSea(string sExecuteLayer, string sRealizeLayer)
 
 void MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
 {
-	LayerDelObject(LAYER_EXECUTE, &Sea);
+	LayerDelObject(EXECUTE, &Sea);
 	LayerDelObject(REALIZE, &Sea);
 	LayerDelObject(SEA_EXECUTE, &Sea);
 	LayerDelObject(SEA_REALIZE, &Sea);
@@ -214,7 +214,7 @@ void AISea_ReturnFromAbordage()
 	MoveWeatherToLayers(SEA_EXECUTE,SEA_REALIZE);
 
 	LayerFreeze(REALIZE,true);
-	LayerFreeze(LAYER_EXECUTE,true);
+	LayerFreeze(EXECUTE,true);
 
 	LayerFreeze(SEA_EXECUTE,false);
 	LayerFreeze(SEA_REALIZE,false);

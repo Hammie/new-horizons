@@ -62,7 +62,7 @@ bool CreateParticleEntity()
 		if (CreateEntity(&Particles,"particles") == false) return false;
 		Trace("bool CreateParticleEntity()");
 		LayerAddObject(REALIZE,Particles,65536);
-		LayerAddObject(LAYER_EXECUTE,Particles,0);
+		LayerAddObject(EXECUTE,Particles,0);
 		LayerAddObject(SEA_REALIZE,Particles,65536);
 		LayerAddObject(SEA_EXECUTE,Particles,0);
 	}

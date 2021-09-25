@@ -5,8 +5,6 @@
 void QS_CreateScrshot()
 {
 	object scrshoter;
-	LayerCreate(REALIZE, 1);
-	LayerSetRealize(REALIZE, 1);
 	CreateEntity(&scrshoter,"scrshoter");
 	scrshoter.SavePath = DEFAULT_PATH;
 	if(bSeaActive && !bAbordageStarted) { LayerAddObject(SEA_REALIZE,&scrshoter,-1); }

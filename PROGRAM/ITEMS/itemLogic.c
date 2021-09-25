@@ -31,7 +31,7 @@ void Items_LoadModel (ref _itemModel, ref _item)
 		if(HasSubStr(_item.model, "blade") || HasSubStr(_item.model, "pistol")) SendMessage(&_itemModel, "ls", MSG_MODEL_SET_TECHNIQUE, "BladeItem");
 		else SendMessage(&_itemModel, "ls", MSG_MODEL_SET_TECHNIQUE, "RandItem");
 		// NK <--
-		LayerAddObject(LAYER_EXECUTE, &_itemModel, ITEMS_LAYER);
+		LayerAddObject(EXECUTE, &_itemModel, ITEMS_LAYER);
 		LayerAddObject(REALIZE, &_itemModel, ITEMS_LAYER);
 
 		Trace("ItemLogic: Loaded model "+itemFolder+"\\"+_item.model);
