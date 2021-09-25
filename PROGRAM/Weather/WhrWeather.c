@@ -50,7 +50,7 @@ int		iTotalNumWeathers = 0;
 string	sLightingPath = "day";
 string	sLmLightingPath = "day";
 string	sInsideBack = "";
-string	sNewExecuteLayer, sNewRealizeLayer;
+int	sNewExecuteLayer, sNewRealizeLayer;
 string	sCurrentFog;
 float	fWeatherDelta = 0.0;
 float	fWeatherAngle, fWeatherSpeed;
@@ -572,7 +572,7 @@ void DeleteWeather()
 	DeleteWeatherEnvironment();
 }
 
-void MoveWeatherToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveWeatherToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE,&Weather);
 	LayerDelObject(REALIZE,&Weather);

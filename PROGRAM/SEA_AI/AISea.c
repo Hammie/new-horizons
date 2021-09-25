@@ -11,7 +11,7 @@ void DeleteSea()
 	DeleteClass(&Sea);
 }
 
-void CreateSea(string sExecuteLayer, string sRealizeLayer)
+void CreateSea(int sExecuteLayer, int sRealizeLayer)
 {
 //	if (IsEntity(&Sea)) DeleteSeaEnvironment(); // KK { Trace("ERROR: Sea Already Loaded!!!"); return; }
 //JA 5DEC06 returned to old function as DeleteSeaEnvironment appears to delete ships models on the sea. Need to leave sea stuff there so can reload after going to deck. (I think)
@@ -26,7 +26,7 @@ void CreateSea(string sExecuteLayer, string sRealizeLayer)
 	Sea.AbordageMode = false;
 }
 
-void MoveSeaToLayers(string sExecuteLayer, string sRealizeLayer)
+void MoveSeaToLayers(int sExecuteLayer, int sRealizeLayer)
 {
 	LayerDelObject(EXECUTE, &Sea);
 	LayerDelObject(REALIZE, &Sea);
