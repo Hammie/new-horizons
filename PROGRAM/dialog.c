@@ -128,9 +128,9 @@ void StartDialogMain()
 	DelEventHandler("frame", "StartDialogMain");
 
 // KK -->
-	if (bNewInterface)
-		CreateEntity(&Dialog, "dialg2");
-	else
+	// if (bNewInterface)
+	// 	CreateEntity(&Dialog, "dialg2");
+	// else
 		CreateEntity(&Dialog, "dialog");
 // KK <--
 
@@ -243,9 +243,9 @@ void SelfDialog(ref Character)
 	Dialog.CurrentNode = CharacterRef.Dialog.CurrentNode;
 	//Trace("SelfDialog: dialog path for self character <" + Character.id + "> = " + FullDialogPath);
 // KK -->
-	if (bNewInterface)
-		CreateEntity(&Dialog, "dialg2");
-	else
+	// if (bNewInterface)
+	// 	CreateEntity(&Dialog, "dialg2");
+	// else
 		CreateEntity(&Dialog, "dialog");
 // <-- KK
 	Log_SetActiveAction("Nothing");//MAXIMUS
